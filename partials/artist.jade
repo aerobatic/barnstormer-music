@@ -6,7 +6,7 @@ div.page-container
 
   .row(ng-cloak)
     .col-md-5
-      div(masonry="{{ masonryOptions | json }}")
+      div(masonry="{{ masonryOptions | json }}", preserve-order="true")
         div.masonry-brick
           img.img-responsive(ng-src="{{artist.image[4]['#text']}}")
       //- div(bm-images-loaded="onImagesLoaded()", ng-show="imagesLoaded")
@@ -16,7 +16,7 @@ div.page-container
         div(ng-bind-html="bio")
     .col-md-2.similar-artists
       h3 Similar Artists
-      div(masonry="{{masonryOptions | json}}")
+      div(masonry="{{masonryOptions | json}}", preserve-order="true")
         div.masonry-brick(ng-repeat="similar in similarArtists")
           a(ng-href="{{artistUrl(similar)}}")
             img.img-responsive(ng-src="{{similar.image[3]['#text']}}")

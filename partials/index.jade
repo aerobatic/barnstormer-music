@@ -4,8 +4,9 @@ div
   //-   i.fa.fa-spinner.fa-4x
   //-   span.h2 Artists Loading
 
-  div.artist-grid(masonry="{{ masonryOptions | json }}")
+  div.artist-grid(masonry="{{ masonryOptions | json }}", preserve-order="true")
     div.masonry-brick(ng-repeat="artist in topArtists")
       a.artist(ng-href="{{artistUrl(artist)}}")
-        img(ng-src="{{artist.image[4]['#text']}}")
+        img(src="http://userserve-ak.last.fm/serve/_/73148396/Foster+the+People+PNG.png")
+        //- img(ng-src="{{artist.image[4]['#text']}}")
         h3 {{artist.name}}

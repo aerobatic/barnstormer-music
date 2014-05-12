@@ -1,19 +1,19 @@
-define(['masonry', 'imagesLoaded'], function(Masonry, imagesLoaded) {
+define(['masonry', 'imagesLoaded', 'lodash'], function(Masonry, imagesLoaded, _) {
   'use strict';
   angular.module('bm.directives', []).controller('MasonryCtrl', [
     '$scope',
     '$element',
     '$timeout',
-    function controller($scope, $element, $timeout) {
+    '$log',
+    function controller($scope, $element, $timeout, $Log) {
       var bricks = {};
       var schedule = [];
       var destroyed = false;
       var self = this;
       var timeout = null;
-      // var masonryInstance = Masonry.data($element[0]);
 
       this.preserveOrder = false;
-      this.scheduleMasonryOnce = function scheduleMasonryOnce() {
+      this.scheduleMasonryOnce = function scheduleMasonryOnce(eventName) {
         var args = arguments;
         var found = schedule.filter(function filterFn(item) {
             return item[0] === args[0];
@@ -23,8 +23,6 @@ define(['masonry', 'imagesLoaded'], function(Masonry, imagesLoaded) {
         }
       };
       this.scheduleMasonry = function scheduleMasonry() {
-        var masonryInstance = Masonry.data($element[0]);
-
         if (timeout) {
           $timeout.cancel(timeout);
         }
@@ -34,7 +32,24 @@ define(['masonry', 'imagesLoaded'], function(Masonry, imagesLoaded) {
             return;
           }
           schedule.forEach(function scheduleForEach(args) {
-            // masonryInstance.apply(masonryInstance, args);
+            var masonryInstance = Masonry.data($element[0]);
+            var fn = masonryInstance[args[0]];
+            if (_.isFunction(fn))
+              fn.apply(masonryInstance, args);
+
+            // if (masonryInstance)
+            //   masonryInstance.apply($element[0], args);
+            //   // masonryInstance(args[0]);
+
+            // masonryInstance[args[0]]
+            // if (masonryInstance) {
+            //   try {
+            //     Masonry.apply(masonryInstance, args);
+            //   }
+            //   catch (e) {
+            //     $log.error("Invalid masonry instance");
+            //   }
+            // }
             // $element.masonry.apply($element, args);
           });
           schedule = [];
@@ -51,15 +66,11 @@ define(['masonry', 'imagesLoaded'], function(Masonry, imagesLoaded) {
           var masonryInstance = Masonry.data($element[0]);
           if (Object.keys(bricks).length === 0) {
             masonryInstance.resize();
-            // Masonry.data($element[0])
-            // $element.masonry('resize');
           }
           if (bricks[id] === undefined) {
             bricks[id] = true;
             defaultLoaded(element);
             masonryInstance.appended(element);
-
-            // $element.masonry('appended', element, true);
           }
         }
         function _layout() {
@@ -83,7 +94,6 @@ define(['masonry', 'imagesLoaded'], function(Masonry, imagesLoaded) {
         }
         delete bricks[id];
         masonryInstance.remove(element);
-        // $element.masonry('remove', element);
         this.scheduleMasonryOnce('layout');
       };
       this.destroy = function destroy() {
