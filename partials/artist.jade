@@ -1,0 +1,28 @@
+
+div.page-container
+  div.page-loading(ng-hide="artistLoaded")
+    i.fa.fa-spinner.fa-spin.fa-4x
+    span.h2 Artist Loading
+
+  .row(ng-cloak)
+    .col-md-5
+      div(masonry="{{ masonryOptions | json }}")
+        div.masonry-brick
+          img.img-responsive(ng-src="{{artist.image[4]['#text']}}")
+      //- div(bm-images-loaded="onImagesLoaded()", ng-show="imagesLoaded")
+    .col-md-5
+      div
+        h1 {{artist.name}}
+        div(ng-bind-html="bio")
+    .col-md-2.similar-artists
+      h3 Similar Artists
+      div(masonry="{{masonryOptions | json}}")
+        div.masonry-brick(ng-repeat="similar in similarArtists")
+          a(ng-href="{{artistUrl(similar)}}")
+            img.img-responsive(ng-src="{{similar.image[3]['#text']}}")
+            h4 {{similar.name}}
+
+      //- div.animate-expand(ng-repeat="similar in similarArtists", ng-show="imagesLoaded")
+      //-   a(ng-href="{{artistUrl(similar)}}")
+      //-     img.img-responsive(ng-src="{{similar.image[3]['#text']}}")
+      //-     h4 {{similar.name}}

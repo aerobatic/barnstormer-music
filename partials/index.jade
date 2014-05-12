@@ -1,0 +1,11 @@
+div
+  h1 Top Artists
+  //- div(ng-show="artistsLoading")
+  //-   i.fa.fa-spinner.fa-4x
+  //-   span.h2 Artists Loading
+
+  div.artist-grid(masonry="{{ masonryOptions | json }}")
+    div.masonry-brick(ng-repeat="artist in topArtists")
+      a.artist(ng-href="{{artistUrl(artist)}}")
+        img(ng-src="{{artist.image[4]['#text']}}")
+        h3 {{artist.name}}

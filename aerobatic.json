@@ -9,12 +9,29 @@
     "angular-mocks": {
       "deps": ["angular"],
       "exports":"angular.mock"
+    },
+    "angular-animate": {
+      "deps": ["angular"]
+    },
+    "angular-fire": {
+      "deps": ["angular", "firebase"]
+    },
+    "angular-bootstrap": {
+      "deps": ["angular"]
     }
   },
   "paths": {
     "angular": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min"],
-    "angular-route": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min"],
-    "angular-mocks": ["//code.angularjs.org/1.2.3/angular-mocks"]
+    "angular-route": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min"],
+    "angular-animate": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-animate.min"],
+    "angular-bootstrap": ["//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min"],
+    "firebase": ["https://cdn.firebase.com/js/client/1.0.11/firebase"],
+    "angular-fire": ["https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire"],
+    "angular-mocks": ["//code.angularjs.org/1.2.3/angular-mocks"],
+    "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min"],
+    "lodash": ["//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min"],
+    "masonry": ["bower_components/masonry/masonry"],
+    "imagesLoaded": ["bower_components/imagesloaded/imagesloaded.pkgd"]
   },
   "mainModule": "js/app"
 }
