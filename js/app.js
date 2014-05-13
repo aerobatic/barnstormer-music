@@ -5,21 +5,24 @@
  */
 require([
   'angular',
+  'jquery',
   'angular-animate',
   'angular-route',
   'angular-bootstrap',
   'firebase',
   'angular-fire',
   'imagesLoaded',
-  'masonry',
   'css!css/bootstrap',
   'css!//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css',
-  'css!css/app'
+  'css!css/app',
+  'asset!bower_components/jquery-bridget/jquery-bridget'
   ], function(angular) {
   'use strict';
 
   define("barnstormer-app", function(require) {
-    require('asset!js/directives/masonry');
+    // require('asset!bower_components/jquery-bridget/jquery-bridget');
+    require('masonry');
+    require('asset!js/directives/masonry-jquery');
     require('asset!js/directives/imagesLoadShow');
     require('asset!js/services/lastfm');
 

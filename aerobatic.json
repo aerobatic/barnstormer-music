@@ -21,6 +21,7 @@
     }
   },
   "paths": {
+    "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"],
     "angular": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min"],
     "angular-route": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min"],
     "angular-animate": ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-animate.min"],
