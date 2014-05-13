@@ -31,6 +31,7 @@
     "angular-mocks": ["//code.angularjs.org/1.2.3/angular-mocks"],
     "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min"],
     "lodash": ["//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min"],
+    "jquery-bridget": ["bower_components/jquery-bridget/jquery-bridget"],
     "masonry": ["bower_components/masonry/masonry"],
     "imagesLoaded": ["bower_components/imagesloaded/imagesloaded.pkgd"]
   },
